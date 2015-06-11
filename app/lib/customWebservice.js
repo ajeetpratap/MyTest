@@ -1,63 +1,78 @@
 /* Custom Webservices */
 
 var webservice = require('webService');
+//facebook sdk initialization
+var fb = Alloy.Globals.facebook;
+//google module load
+var googleAuth = Alloy.Globals.googleAuth;
 
-/**Push Notification Device Registaration*/
-exports.register_device = function(_app_id, _type, _token, callback) {
-  _app_id = typeof _app_id !== 'undefined' ? _app_id : '12108';
-  _type = typeof _type !== 'undefined' ? _type : 'ios';
-  var header_data = [];
-  var endpoint = 'http://studio.m2serve.net/m2serve/push_notification/register_device.json';
-  var param = {
-    'app_id': _app_id,
-    'type': _type,
-    'token': _token
-  };
-  webservice.callWebServiceJSON('POST', endpoint, param, header_data, 'json', false, function(e) {
-    callback(e);
-  }, true);
-}; /**Subscribe Push Notification Channel*/
-exports.subscribe_channel = function(_app_id, _device_id, _channel, callback) {
-  _app_id = typeof _app_id !== 'undefined' ? _app_id : '12108';
-  var header_data = [];
-  var endpoint = 'http://studio.m2serve.net/m2serve/push_notification/subscribe_channel.json';
-  var param = {
-    'app_id': _app_id,
-    'device_id': _device_id,
-    'channel': _channel
-  };
-  webservice.callWebServiceJSON('POST', endpoint, param, header_data, 'json', false, function(e) {
-    callback(e);
-  }, true);
-}; /**Unsubscribe Push Notification Channel*/
-exports.unsubscribe_channel = function(_app_id, _device_id, _channel, callback) {
-  _app_id = typeof _app_id !== 'undefined' ? _app_id : '12108';
-  var header_data = [];
-  var endpoint = 'http://studio.m2serve.net/m2serve/push_notification/unsubscribe_channel.json';
-  var param = {
-    'app_id': _app_id,
-    'device_id': _device_id,
-    'channel': _channel
-  };
-  webservice.callWebServiceJSON('POST', endpoint, param, header_data, 'json', false, function(e) {
-    callback(e);
-  }, true);
-}; /**Send Push Notification*/
-exports.send_push_message = function(_app_id, _message, _sound, _alert, _badge, _badge_count, _device, _channel, callback) {
-  _app_id = typeof _app_id !== 'undefined' ? _app_id : '12108';
-  var header_data = [];
-  var endpoint = 'http://studio.m2serve.net/m2serve/push_notification/send_push_message.json';
-  var param = {
-    'app_id': _app_id,
-    'message': _message,
-    'sound': _sound,
-    'alert': _alert,
-    'badge': _badge,
-    'badge_count': _badge_count,
-    'device': _device,
-    'channel': _channel
-  };
-  webservice.callWebServiceJSON('POST', endpoint, param, header_data, 'json', false, function(e) {
-    callback(e);
-  }, true);
+var status = {};
+
+/**
+ * Facebook Login
+ * @param {function} callback
+ */
+exports.facebookLogin = function(callback) {
+	fb.addEventListener('login', function(e) {
+		if (e.success) {
+			Ti.API.info(JSON.stringify(e));
+			status.statusCode = 0;
+			status.statusMessage = JSON.stringify(e);
+			callback(status);
+
+		} else if (e.cancelled) {
+			status.statusCode = 1;
+			status.statusMessage = JSON.stringify(e);
+			callback(status);
+		} else {
+			status.statusCode = 2;
+			status.statusMessage = JSON.stringify(e);
+			callback(status);
+		}
+	});
+
+	fb.authorize();
+};
+
+/**
+ * Google+ login
+ * @param {function} callback
+ */
+exports.googleLogin = function(callback) {
+	googleAuth.isAuthorized(function() {
+		Ti.API.info('Access Token: ' + googleAuth.getAccessToken());
+		getGooglePlusUser(function(e) {
+			callback(e);
+		});
+	}, function() {
+		googleAuth.authorize(function() {
+			getGooglePlusUser(function(e) {
+				callback(e);
+			});
+		});
+
+	});
+};
+
+/**
+ * private function for used by googleLogin to get the user profile information
+ * @param {function} callback
+ */
+function getGooglePlusUser(callback) {
+	var xhrList = Ti.Network.createHTTPClient({
+		onload : function(e) {
+			var resp = JSON.parse(this.responseText);
+			status.statusCode = 0;
+			status.statusMessage = JSON.stringify(resp);
+			callback(status);
+		},
+		onerror : function(e) {
+			status.statusCode = 1;
+			status.statusMessage = JSON.stringify(e);
+			callback(status);
+		},
+		timeout : 5000
+	});
+	xhrList.open("GET", 'https://www.googleapis.com/plus/v1/people/me?access_token=' + googleAuth.getAccessToken());
+	xhrList.send();
 };

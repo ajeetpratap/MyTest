@@ -1,15 +1,95 @@
-'#SignUpLabel': {
-  top: '371dp',
-  left: '171dp',
-  text: 'SignUp',
-  color:'#000000'
-},
 '#LoginScreen[platform=android]': {
-  fullscreen: false
+  fullscreen: true,
+  windowSoftInputMode: Titanium.UI.Android.SOFT_INPUT_STATE_HIDDEN
 },
 '#LoginScreen': {
   top: '0dp',
   left: '0dp',
   backgroundColor:'#ffffff',
-  navGroup: ''
+  title: 'ActDev Login',
+  navGroup: '',
+  navTintColor :'#f29c23'
+},
+'#facebookBtn': {
+  top: 45,
+  height: Alloy.Globals.Control.button.height,
+  width: '70%',
+  borderRadius:5,
+  backgroundColor:'#3b5998',
+  color:'#ffffff',  
+  title: 'Signup with Facebook'
+},
+'#googlebutton': {
+  top: 10,
+  width: '70%',
+  height: Alloy.Globals.Control.button.height,
+  color:'#ffffff',
+  borderRadius:5,
+  backgroundColor:'#d34836',
+  title:'Signup with Google+'
+},
+'#OrLabel': {
+  top: 10,
+  color: '#f29c23',
+  text: 'OR',
+  
+},
+
+'#EmailTxt': {
+  top: 8,
+  width: '85%',
+  paddingLeft: 10,
+  color:'#000000',
+  borderColor:'#2f3237',
+  borderWidth: 1,
+  hintTextColor:Alloy.Globals.Control.textField.hintTextColor,
+  borderRadius:5,
+  height: Alloy.Globals.Control.textField.height,
+   hintText: 'email'
+},
+
+'#PasswordTxt': {
+  top: 8,
+  width: '85%',
+  paddingLeft: 10,
+  color:'#000000',
+  borderColor:'#2f3237',
+  borderWidth: 1,
+  borderRadius:5,
+  hintTextColor:Alloy.Globals.Control.textField.hintTextColor,
+  height: Alloy.Globals.Control.textField.height,
+   hintText: 'password',
+   passwordMask:true
+},
+'#LoginBtn': {
+  top: 40,
+  width:'70%',
+  height: Alloy.Globals.Control.textField.height,
+  borderRadius:5,
+  color:'#ffffff',
+  backgroundColor: '#f29c23',
+  title: 'Sign In'
+},
+'#ScrollView': {
+  top: '0dp',
+  left: '0dp',
+  height: Ti.UI.FILL,
+  width: '100%',
+  backgroundColor: '#ffffff',
+  layout: 'vertical'
+},
+
+'#newOnactdevLbl':{
+	right:5.2,
+	text:'New on ActDev',
+	font:{fontSize:'15sp'}
+}
+'#SignUpBtn': {
+  right: 1,
+  width:'55%',
+  height: Alloy.Globals.Control.textField.height,
+  borderRadius:5,
+  color:'#ffffff',
+  backgroundColor: '#f29c23',
+  title: 'Sign up'
 },

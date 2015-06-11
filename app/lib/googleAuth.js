@@ -93,6 +93,7 @@ var GoogleAuth = function(o) {
 			backgroundColor : 'white',
 			barColor : _opt.winColor,
 			modal : true,
+			navBarHidden:false,
 			title : _opt.winTitle
 		});
 		var spinner = Ti.UI.createActivityIndicator({
@@ -151,7 +152,7 @@ var GoogleAuth = function(o) {
 				win.close();
 			}
 		});
-		win.open({modal:true});
+		win.open();
 	}
 
 	function deAuthorize(cb) {

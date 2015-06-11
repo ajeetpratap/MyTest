@@ -1,10 +1,36 @@
 <Alloy>
     <NavigationWindow  id='navigationGroup' platform='ios' >
         <Window  id='LoginScreen' >
-            <Label  id='SignUpLabel' onClick='SignUpLabel_click' />
+           <ScrollView  id='ScrollView' >
+            <Button  id='facebookBtn' onClick="fbLogin" />
+            <Button  id='googlebutton' onClick="gLogin" />
+            <Label  id='OrLabel' />
+            <TextField  id='EmailTxt' >
+            </TextField>
+            <TextField  id='PasswordTxt' >
+            </TextField>
+            <Button  id='LoginBtn' />
+            <View id=signupBox backgroundColor="transparent" height="Ti.UI.SIZE" width="70%" layout="horizontal"top = "35">
+            	<Label id="newOnactdevLbl" color="#000000" />
+            	<Button  id='SignUpBtn' onClick="SignUp" />            	            	
+            </View>
+        </ScrollView>
         </Window>
     </NavigationWindow>
     <Window id= "LoginScreen" platform = "android" >
-        <Label  id='SignUpLabel' onClick='SignUpLabel_click' />
+        <ScrollView  id='ScrollView' >
+            <Button  id='facebookBtn' onClick="fbLogin" />
+            <Button  id='googlebutton' onClick="gLogin" />
+            <Label  id='OrLabel' />
+            <TextField  id='EmailTxt' >
+            </TextField>
+            <TextField  id='PasswordTxt' >
+            </TextField>
+            <Button  id='LoginBtn' />
+            <View id=signupBox backgroundColor="transparent" height="Ti.UI.SIZE" width="Ti.UI.SIZE" layout="horizontal">
+            	<Label id="newOnactdevLbl" color="#000000" />
+            	<Button  id='SignUpBtn' onClick="SignUp" />
+            </View>
+        </ScrollView>
     </Window>
 </Alloy>
