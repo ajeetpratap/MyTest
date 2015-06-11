@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <id>com.bliss.actdev</id>
+    <name>ActDev</name>
+    <version>1.0</version>
+    <publisher>apple</publisher>
+    <url>http://actdev.test</url>
+    <description>undefined</description>
+    <copyright>2015 by apple</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>1ef40c66-f5a8-4a10-9aaa-c064bf6f5bc0</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+                <key>CFBundleURLTypes</key>
+                    <array>
+                        <dict>
+                            <key>CFBundleURLName</key>
+                            <!-- Application ID same as the id value in the tiapp.xml file -->
+                            <string>com.bliss.actdev</string>
+                            <key>CFBundleURLSchemes</key>
+                            <array>
+                                <!-- Prefix the Facebook App ID with 'fb' -->
+                                <string>fb1461475560817581</string>
+                            </array>
+                        </dict>
+                    </array>
+                    <key>FacebookAppID</key>
+                    <!-- Facebook App ID -->
+                    <string>1461475560817581</string>
+                    <key>FacebookDisplayName</key>
+                    <!-- Facebook App Name from developer.facebook.com -->
+                    <string>ActDevTest</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+    	<manifest>
+            <application>
+                <activity android:label="@string/app_name"
+                    android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+                <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+            </application>
+            </manifest>
+    	</android>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="android">facebook</module>
+        <module platform="iphone">facebook</module>
+    </modules>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="ipad">false</target>
+        <target device="iphone">true</target>
+        <target device="mobileweb">false</target>
+    </deployment-targets>
+    <sdk-version>4.0.0.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+    <property name="appc-app-id" type="string">5575a5f14a84823969ba3856</property>
+</ti:app>

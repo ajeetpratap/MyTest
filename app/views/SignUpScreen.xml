@@ -1,0 +1,22 @@
+<Alloy>
+    <Window  id='SignUpScreen' >
+        <ScrollView  id='ScrollView' >
+            <Button  id='facebookBtn' onClick="fbLogin" />
+            <Button  id='googlebutton' onClick="gLogin" />
+            <Label  id='OrLabel' />
+            <TextField  id='FirstNameTxt' >
+            </TextField>
+            <TextField  id='LastNameTxt' >
+            </TextField>
+            <TextField  id='dobTxt' >
+            </TextField>
+            <TextField  id='UserNameTxt' >
+            </TextField>
+            <TextField  id='EmailTxt' >
+            </TextField>
+            <TextField  id='PasswordTxt' >
+            </TextField>
+            <Button  id='SignUpBtn' />
+        </ScrollView>
+    </Window>
+</Alloy>

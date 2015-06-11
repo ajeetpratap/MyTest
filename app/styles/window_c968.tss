@@ -1,0 +1,15 @@
+'#SignUpLabel': {
+  top: '371dp',
+  left: '171dp',
+  text: 'SignUp',
+  color:'#000000'
+},
+'#LoginScreen[platform=android]': {
+  fullscreen: false
+},
+'#LoginScreen': {
+  top: '0dp',
+  left: '0dp',
+  backgroundColor:'#ffffff',
+  navGroup: ''
+},

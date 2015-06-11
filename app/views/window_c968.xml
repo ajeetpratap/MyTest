@@ -1,0 +1,10 @@
+<Alloy>
+    <NavigationWindow  id='navigationGroup' platform='ios' >
+        <Window  id='LoginScreen' >
+            <Label  id='SignUpLabel' onClick='SignUpLabel_click' />
+        </Window>
+    </NavigationWindow>
+    <Window id= "LoginScreen" platform = "android" >
+        <Label  id='SignUpLabel' onClick='SignUpLabel_click' />
+    </Window>
+</Alloy>
